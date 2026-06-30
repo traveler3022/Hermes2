@@ -413,8 +413,8 @@ private fun GatewaySyncPage() {
 
         Text(
             text = t(
-                "On first launch, the gateway needs a one-time sync to recognize the app. Follow these steps carefully:",
-                "در اولین اجرا، گیت‌وی نیاز به یک همگام‌سازی یک‌بار دارد تا اپ را شناسایی کند. این مراحل را با دقت دنبال کنید:"
+                "On the first launch only, the gateway needs a one-time sync so the app can connect. After this, it reconnects automatically every time. Follow these steps in order:",
+                "فقط در اولین اجرا، گیت‌وی به یک همگام‌سازی یک‌بار نیاز دارد تا اپ بتواند متصل شود. بعد از آن، هر بار خودکار وصل می‌شود. این مراحل را به‌ترتیب انجام دهید:"
             ),
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
@@ -439,39 +439,42 @@ private fun GatewaySyncPage() {
 
                 SyncStep(
                     "۱ / 1",
-                    t("Open Termux and run:", "ترموکس را باز کنید و اجرا کنید:"),
+                    t(
+                        "After setup finishes, Termux opens a fresh prompt. Run:",
+                        "بعد از پایان نصب، ترموکس یک خط‌فرمان تازه باز می‌کند. اجرا کنید:"
+                    ),
                     code = "hermes dashboard --stop",
                 )
 
                 SyncStep(
                     "۲ / 2",
                     t(
-                        "Force stop Termux: Android Settings → Apps → Termux → Force Stop",
-                        "ترموکس را فورس استاپ کنید: تنظیمات → برنامه‌ها → Termux → توقف اجباری"
+                        "Leave Termux, then Force stop it (Settings → Apps → Termux → Force Stop) to free the gateway port.",
+                        "از ترموکس خارج شوید، سپس آن را Force stop کنید (تنظیمات → برنامه‌ها → Termux → توقف اجباری) تا پورت گیت‌وی آزاد شود."
                     ),
                 )
 
                 SyncStep(
                     "۳ / 3",
                     t(
-                        "Return to this app → go to Runtime Setup section",
-                        "به این اپ برگردید → به بخش Runtime Setup بروید"
+                        "Back in this app, tap \"Open runtime host app\" — Termux opens.",
+                        "در همین اپ، روی «Open runtime host app» بزنید — ترموکس باز می‌شود."
                     ),
                 )
 
                 SyncStep(
                     "۴ / 4",
                     t(
-                        "Tap the Termux entry to launch Termux — then come back to the app",
-                        "روی گزینه Termux بزنید تا اجرا شود — سپس به اپ برگردید"
+                        "Return to the app and tap \"Start Agent Gateway\".",
+                        "به اپ برگردید و روی «Start Agent Gateway» بزنید."
                     ),
                 )
 
                 SyncStep(
                     "۵ / 5",
                     t(
-                        "Wait ~30 seconds — the gateway will connect automatically",
-                        "حدود ۳۰ ثانیه صبر کنید — گیت‌وی به صورت خودکار متصل می‌شود"
+                        "Wait ~30 seconds — the status turns to ✓ Connected.",
+                        "حدود ۳۰ ثانیه صبر کنید — وضعیت به ✓ Connected تغییر می‌کند."
                     ),
                 )
             }
@@ -496,8 +499,8 @@ private fun GatewaySyncPage() {
                 )
                 Text(
                     text = t(
-                        "If still not connected after 30s, repeat steps 1–5 once more.",
-                        "اگر بعد از ۳۰ ثانیه هنوز متصل نشد، مراحل ۱ تا ۵ را یک بار دیگر تکرار کنید."
+                        "Only needed the first time. If it doesn't connect after ~30s, repeat steps 3–5.",
+                        "فقط بار اول لازم است. اگر بعد از ~۳۰ ثانیه وصل نشد، مراحل ۳ تا ۵ را تکرار کنید."
                     ),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onTertiaryContainer,

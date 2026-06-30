@@ -20,6 +20,10 @@
 
 `calm` · `technical` · `readable` · `fast` · `trustworthy`
 
+<br>
+
+**English** · [فارسی 🇮🇷](README.fa.md)
+
 </div>
 
 ---

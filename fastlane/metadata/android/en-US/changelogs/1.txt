@@ -1,0 +1,6 @@
+First release of Hermes2 (0.1.0).
+
+• Native Material 3 chat for Hermes Agent: streaming, reasoning view, tool-call and sub-agent cards, slash commands.
+• Sessions drawer (search, sort, pin, rename, delete, resume).
+• Runtime Setup, tool-approval notifications, Config/Skills/Cron/Platforms.
+• 6 color themes, Light/Dark/System, bilingual interface (English & Persian).

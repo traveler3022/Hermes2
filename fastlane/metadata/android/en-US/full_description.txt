@@ -1,0 +1,28 @@
+Hermes2 is the first native Android port of Hermes Agent — the open-source AI agent from Nous Research. Instead of typing commands into a terminal, you get a proper Material 3 control room for your own agent, running entirely on your phone.
+
+The agent does the work — chatting, running tools, writing code. Hermes2 gives it a comfortable home on Android.
+
+FEATURES
+
+• Live streaming responses, token by token
+• Reasoning view — see the model think before it answers
+• Tool-call cards with collapsible output, plus sub-agent cards
+• Slash commands pulled live from the gateway catalog
+• Session drawer — search, sort, pin, rename, delete, and resume
+• Tool approval as Android notifications (Approve / Deny)
+• Config, Skills, Cron and Platforms screens
+• 6 color themes with Light / Dark / System modes
+• Bilingual interface — English and Persian
+
+PRIVACY
+
+• The app ↔ agent link runs over 127.0.0.1 (loopback) and never leaves your device.
+• No account, no telemetry, no cloud middleman.
+• Your API key stays in Hermes' own config inside Termux.
+• Your messages go only to the model provider you choose.
+
+REQUIREMENTS
+
+This is a power-user tool, not a casual chat app. It requires Termux (from F-Droid) with Hermes Agent installed, plus an API key for a model provider such as Xiaomi MiMo or Google Gemini. The agent can run real shell commands inside Termux — keep tool approval enabled and do not root your device.
+
+Independent community project. Not affiliated with or endorsed by Nous Research.

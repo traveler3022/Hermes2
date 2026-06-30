@@ -77,7 +77,14 @@ jobs:
         run: |
           NOTES="$(printf 'Signed release **%s**\nCommit: %s\nBuilt: %s' \
             "$GITHUB_REF_NAME" "${GITHUB_SHA:0:8}" "$(date -u '+%Y-%m-%d %H:%M UTC')")"
-          gh release create "$GITHUB_REF_NAME" app/build/outputs/apk/release/*.apk \
-            --title "Hermes2 $GITHUB_REF_NAME" \
-            --notes "$NOTES" \
-            --target "$GITHUB_SHA"
+          # Works whether the tag was pushed from git (no release yet) OR the
+          # release was drafted in the GitHub web UI (release already exists):
+          # create it if missing, otherwise just attach the signed APK.
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" app/build/outputs/apk/release/*.apk --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" app/build/outputs/apk/release/*.apk \
+              --title "Hermes2 $GITHUB_REF_NAME" \
+              --notes "$NOTES" \
+              --target "$GITHUB_SHA"
+          fi

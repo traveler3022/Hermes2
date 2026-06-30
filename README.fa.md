@@ -22,7 +22,7 @@
 
 <br>
 
-[English 🇬🇧](README.md) · **فارسی**
+[English](README.md) · **فارسی**
 
 </div>
 

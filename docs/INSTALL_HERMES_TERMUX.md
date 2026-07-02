@@ -2,7 +2,7 @@
 
 # نصب Hermes Agent در Termux
 
-راهنمای نصب Hermes Agent روی اندروید از طریق Termux.
+راهنمای گام‌به‌گام نصب Hermes Agent روی اندروید از طریق Termux. این **مرحله‌ی ۱ از ۳** برای راه‌اندازی Hermes2 است.
 
 > مستندات رسمی: **[hermes-agent.nousresearch.com/docs/getting-started/termux](https://hermes-agent.nousresearch.com/docs/getting-started/termux)**
 
@@ -15,14 +15,14 @@
 | پیش‌نیاز | توضیح |
 |---|---|
 | **گوشی اندروید** | اندروید ۱۰ یا بالاتر |
-| **Termux** | از F-Droid نصب شده (نه Play Store) |
-| **فضای ذخیره** | حداقل ۵۰۰ مگابایت خالی |
+| **Termux** | نصب‌شده از F-Droid (نه Play Store) |
+| **فضای ذخیره‌سازی** | حداقل ۵۰۰ مگابایت خالی |
 | **اینترنت** | برای دانلود پکیج‌ها |
 
 > [!WARNING]
-> Termux را **فقط از F-Droid** نصب کن. نسخه Play Store رها شده و کار نمیکند.
+> Termux را **فقط از F-Droid** نصب کن. نسخه‌ی Play Store رها شده و کار نمی‌کند.
 >
-> → [دانلود Termux از F-Droid](https://f-droid.org/en/packages/com.termux/)
+> ← [دانلود Termux از F-Droid](https://f-droid.org/en/packages/com.termux/)
 
 ---
 
@@ -30,7 +30,7 @@
 
 <div dir="rtl">
 
-این تنظیم لازم است تا اپ Hermes2 بتواند دستور در Termux اجرا کند.
+این تنظیم لازم است تا اپ Hermes2 بتواند داخل Termux دستور اجرا کند.
 
 </div>
 
@@ -41,7 +41,7 @@ echo 'allow-external-apps=true' >> ~/.termux/termux.properties
 
 <div dir="rtl">
 
-**بعد Termux را ببند و دوباره باز کن.**
+**بعد Termux را کامل ببند و دوباره باز کن** تا تنظیم اعمال شود.
 
 ---
 
@@ -58,13 +58,13 @@ pkg install -y git python clang rust make pkg-config libffi openssl ca-certifica
 
 | پکیج | دلیل |
 |---|---|
-| python | اجرا + venv |
+| python | اجرای هرمس + محیط مجازی (venv) |
 | git | دانلود کد |
-| clang, rust, make, pkg-config, libffi, openssl | کامپایل dependency‌های پایتون |
+| clang, rust, make, pkg-config, libffi, openssl | کامپایل وابستگی‌های پایتون |
 | ca-certificates, curl | اتصال HTTPS |
 | llvm, lld | کامپایل بعضی پکیج‌های Rust |
 | nodejs | ابزارهای اختیاری |
-| ripgrep | جستوجوی سریع فایل |
+| ripgrep | جست‌وجوی سریع فایل |
 | ffmpeg | تبدیل صدا/ویدیو |
 
 ---
@@ -73,7 +73,10 @@ pkg install -y git python clang rust make pkg-config libffi openssl ca-certifica
 
 <div dir="rtl">
 
-**دو روش وجود دارد. یکی را انتخاب کن:**
+**دو روش وجود دارد. فقط یکی را انتخاب کن:**
+
+- **روش A (خودکار):** یک دستور، همه‌چیز را خودش نصب می‌کند. **اول این را امتحان کن.**
+- **روش B (دستی):** قدم‌به‌قدم و شفاف. اگر روش A خطا داد، سراغ این بیا.
 
 ---
 
@@ -87,21 +90,23 @@ curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
 <div dir="rtl">
 
-نصبکننده خودکار:
-- پکیج‌های سیستمی را نصب میکند
-- محیط مجازی پایتون میسازد
-- اول `.[termux-all]` را امتحان میکند، اگر نشد `.[termux]`، اگر نشد نصب پایه
-- `hermes` را در PATH قرار میدهد
+نصب‌کننده‌ی خودکار:
+- پکیج‌های سیستمی را نصب می‌کند
+- محیط مجازی پایتون می‌سازد
+- اول `.[termux-all]` را امتحان می‌کند، اگر نشد `.[termux]`، اگر نشد نصب پایه
+- دستور `hermes` را در PATH قرار می‌دهد
 
-> ⏱️ نصب اول **۵ تا ۱۵ دقیقه** طول می‌کشد (Rust کد کامپایل می‌شود). صفحه را روشن نگه دار.
+> ⏱️ نصب اول **۵ تا ۱۵ دقیقه** طول می‌کشد (کد Rust روی گوشی کامپایل می‌شود). صفحه را روشن نگه دار.
 
-اگر نصبکننده خطا داد، **روش B** را امتحان کن.
+اگر نصب‌کننده خطا داد، **روش B** را امتحان کن.
+
+اگر نصب موفق بود، مستقیم برو به **[مرحله ۳ — بررسی نصب](#مرحله-۳--بررسی-نصب)**.
 
 ---
 
 ### روش B — نصب دستی (کامل و شفاف)
 
-#### ۱. تنظیم محیط کامپایل
+#### ب-۱. تنظیم محیط کامپایل
 
 </div>
 
@@ -135,10 +140,13 @@ export CARGO_BUILD_JOBS=1
 |---|---|
 | `CARGO_HOME` | جلوگیری از خطای mirror مثل USTC 404 |
 | `CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse` | استفاده از ایندکس sparse |
-| `CARGO_PROFILE_RELEASE_LTO=false` | جلوگیری از crash rustc |
-| `CARGO_BUILD_JOBS=1` | کاهش فشار حافظه/CPU گوشی |
+| `CARGO_PROFILE_RELEASE_LTO=false` | جلوگیری از crash کامپایلر Rust |
+| `CARGO_BUILD_JOBS=1` | کاهش فشار حافظه/CPU روی گوشی |
 
-#### ۲. دانلود کد
+> [!NOTE]
+> دستورهای `export` فقط تا وقتی همین شل باز است اعتبار دارند. اگر Termux را بستی و برگشتی، دوباره اجرایشان کن.
+
+#### ب-۲. دانلود کد
 
 </div>
 
@@ -147,7 +155,7 @@ git clone https://github.com/NousResearch/hermes-agent.git
 cd hermes-agent
 ```
 
-#### ۳. ساخت محیط مجازی پایتون
+#### ب-۳. ساخت محیط مجازی پایتون
 
 ```bash
 python -m venv venv
@@ -156,7 +164,7 @@ export ANDROID_API_LEVEL="$(getprop ro.build.version.sdk)"
 python -m pip install --upgrade pip setuptools wheel
 ```
 
-#### ۴. نصب پروفایل Termux
+#### ب-۴. نصب پروفایل Termux
 
 ```bash
 python -m pip install -e '.[termux]' -c constraints-termux.txt
@@ -166,11 +174,9 @@ python -m pip install -e '.[termux]' -c constraints-termux.txt
 
 > ⏱️ این مرحله **۵ تا ۱۵ دقیقه** طول می‌کشد. صفحه را روشن نگه دار.
 
-#### ۵. نصب psutil برای اندروید
+#### ب-۵. نصب psutil برای اندروید
 
-<div dir="rtl">
-
-psutil روی اندروید مستقیم نصب نمیشود. اسکریپت shim لازم است:
+psutil روی اندروید مستقیم نصب نمی‌شود و اسکریپت جایگزین (shim) لازم دارد:
 
 </div>
 
@@ -178,11 +184,11 @@ psutil روی اندروید مستقیم نصب نمیشود. اسکریپت sh
 python scripts/install_psutil_android.py --pip "python -m pip"
 ```
 
-#### ۶. نصب وب‌سرور dashboard (برای اتصال اپ)
-
 <div dir="rtl">
 
-اپ Hermes2 از طریق WebSocket به dashboard وصل میشود. این extra لازم است:
+#### ب-۶. نصب وب‌سرور dashboard (برای اتصال اپ)
+
+اپ Hermes2 از طریق WebSocket به dashboard هرمس وصل می‌شود، پس این بخش هم لازم است:
 
 </div>
 
@@ -191,9 +197,13 @@ python -m pip install -e '.[web]' -c constraints-termux.txt
 ```
 
 > [!NOTE]
-> مستندات رسمی Termux این دو مرحله را ندارد چون فقط برای CLI است. ولی برای اتصال اپ Hermes2 **لازم هستند**.
+> <div dir="rtl">مستندات رسمی Termux این دو مرحله (ب-۵ و ب-۶) را ندارد چون فقط برای CLI نوشته شده. ولی برای اتصال اپ Hermes2 <b>حتماً لازم‌اند</b>.</div>
 
-#### ۷. قراردادن hermes در PATH
+<div dir="rtl">
+
+#### ب-۷. قراردادن hermes در PATH
+
+</div>
 
 ```bash
 ln -sf "$PWD/venv/bin/hermes" "$PREFIX/bin/hermes"
@@ -201,14 +211,16 @@ ln -sf "$PWD/venv/bin/hermes" "$PREFIX/bin/hermes"
 
 <div dir="rtl">
 
-`$PREFIX/bin` در Termux از قبل در PATH هست، پس دستور `hermes` در هر شل جدید کار میکند.
+`$PREFIX/bin` در Termux از قبل داخل PATH هست، پس از این به بعد دستور `hermes` در هر شل جدید کار می‌کند.
 
 ---
 
 ## مرحله ۳ — بررسی نصب
 
+</div>
+
 ```bash
-hermes version
+hermes --version
 hermes doctor
 ```
 
@@ -226,31 +238,13 @@ Python: 3.13.x
 <div dir="rtl">
 
 > [!NOTE]
-> اگر `hermes doctor` خطا نشان داد، `hermes doctor --fix` را امتحان کن.
+> اگر `hermes doctor` خطا نشان داد، `hermes doctor --fix` را اجرا کن و دوباره چک کن.
 
 ---
 
-## مرحله ۴ — شروع هرمس
+## مرحله ۴ — تنظیم کلید API
 
-```bash
-hermes
-```
-
-<div dir="rtl">
-
-اگر بار اول باشد، ویزارد راهاندازی اجرا میشود. اگر قبلاً تنظیم کرده باشی، مستقیم وارد چت میشوی.
-
----
-
-## مرحله ۵ — تنظیم مدل
-
-```bash
-hermes model
-```
-
-<div dir="rtl">
-
-یا کلید API را مستقیم در `~/.hermes/.env` تنظیم کن. مثال:
+قبل از اولین اجرا، کلید API ارائه‌دهنده‌ی مدلت را در فایل env هرمس بگذار:
 
 </div>
 
@@ -258,51 +252,64 @@ hermes model
 nano ~/.hermes/.env
 ```
 
+<div dir="rtl">
+
+برای **Gemini** (کلید رایگان از [aistudio.google.com](https://aistudio.google.com)):
+
+</div>
+
 ```env
-GEMINI_API_KEY=*** hermes config set model.provider gemini
+GEMINI_API_KEY=YOUR_GEMINI_KEY
+```
+
+<div dir="rtl">
+
+برای **OpenRouter** (کلید از [openrouter.ai/keys](https://openrouter.ai/keys)):
+
+</div>
+
+```env
+OPENROUTER_API_KEY=YOUR_OPENROUTER_KEY
+```
+
+<div dir="rtl">
+
+ذخیره کن: `Ctrl+O` بعد `Enter` بعد `Ctrl+X`.
+
+سپس به هرمس بگو از کدام provider و مدل استفاده کند (مثال برای Gemini):
+
+</div>
+
+```bash
+hermes config set model.provider gemini
 hermes config set model.default gemini-2.5-flash
 ```
 
 <div dir="rtl">
 
-یا ویزارد کامل راهاندازی:
+---
+
+## مرحله ۵ — اولین اجرا
 
 </div>
 
 ```bash
-hermes setup
+hermes
 ```
 
 <div dir="rtl">
 
-راهنمای کامل ویزارد: **[تنظیم اولیه هرمس](SETUP_HERMES_TERMUX.md)**
+بار اول، ویزارد راه‌اندازی اجرا می‌شود — گزینه‌های پیشنهادی هر صفحه را در راهنمای بعدی نوشته‌ایم:
+
+**← ادامه بده: [راهنمای ویزارد راه‌اندازی](SETUP_HERMES_TERMUX.md)**
+
+اگر قبلاً تنظیم کرده باشی، مستقیم وارد چت می‌شوی.
 
 ---
 
-## مرحله ۶ — اتصال به اپ Hermes2
+## مرحله ۶ — نصب ابزارهای Node (اختیاری)
 
-</div>
-
-```bash
-hermes dashboard --stop
-```
-
-<div dir="rtl">
-
-از Termux خارج شو → تنظیمات اندروید → برنامه‌ها → Termux → Force stop.
-
-اپ Hermes2 را باز کن → **Start Agent Gateway** → ۳۰ ثانیه صبر → **✓ Connected**
-
-راهنمای کامل اتصال: **[اتصال Gateway به اپ](GATEWAY_SETUP.md)**
-
-> [!TIP]
-> فقط دفعه اول نیاز به force-stop داره. بعدش خودکار وصل میشود.
-
----
-
-## مرحله ۷ — نصب ابزارهای Node (اختیاری)
-
-نصب Termux عمداً ابزارهای Node/browser را رد میکند. اگر میخوای browser tool رو امتحان کنی:
+نصب Termux عمداً ابزارهای Node/browser را رد می‌کند. اگر می‌خواهی browser tool را امتحان کنی:
 
 </div>
 
@@ -318,7 +325,7 @@ npm install
 
 ---
 
-## عیبیابی
+## عیب‌یابی
 
 ### `hermes: command not found`
 
@@ -330,11 +337,11 @@ ln -sf "$PWD/venv/bin/hermes" "$PREFIX/bin/hermes"
 which hermes
 ```
 
-### خطای نصب `.[all]`
-
 <div dir="rtl">
 
-`.[all]` روی اندروید پشتیبانی نمیشود. از پروفایل Termux استفاده کن:
+### خطای نصب `.[all]`
+
+پروفایل `.[all]` روی اندروید پشتیبانی نمی‌شود. از پروفایل Termux استفاده کن:
 
 </div>
 
@@ -342,11 +349,13 @@ which hermes
 python -m pip install -e '.[termux]' -c constraints-termux.txt
 ```
 
-### Termux در پس‌زمینه کشته می‌شود
-
 <div dir="rtl">
 
-تنظیمات اندروید → برنامه‌ها → Termux → باتری → بدون محدودیت
+### Termux در پس‌زمینه کشته می‌شود
+
+تنظیمات اندروید ← برنامه‌ها ← Termux ← باتری ← **بدون محدودیت**
+
+و داخل Termux:
 
 </div>
 
@@ -359,9 +368,9 @@ termux-wake-lock
 <div dir="rtl">
 
 > [!NOTE]
-> **اندروید پلتفرم «Tier 2»** است. Browser Automation، Computer Use، voice transcription و Docker روی اندروید کار نمی‌کنند. بقیه چیزها کار میکنن.
+> اندروید برای هرمس پلتفرم **«Tier 2»** است: Browser Automation، Computer Use، voice transcription و Docker روی اندروید کار نمی‌کنند. بقیه‌ی امکانات کار می‌کنند.
 
 ---
 
-**→ [تنظیم اولیه هرمس](SETUP_HERMES_TERMUX.md)** · **[اتصال Gateway](GATEWAY_SETUP.md)** · **[راهنمای فنی کامل](RUNNING_ON_ANDROID_TERMUX.md)**
+**← مرحله‌ی بعد: [ویزارد راه‌اندازی](SETUP_HERMES_TERMUX.md)** · بعدش: [اتصال اپ](GATEWAY_SETUP.md) · مرجع کامل: [راهنمای فنی](RUNNING_ON_ANDROID_TERMUX.md)
 </div>

@@ -6,7 +6,7 @@
   <sub>A focused control room for your AI agent — running entirely on your phone.</sub>
   <br><br>
   <a href="https://github.com/traveler3022/Hermes2/actions/workflows/build-apk.yml"><img src="https://github.com/traveler3022/Hermes2/actions/workflows/build-apk.yml/badge.svg" alt="Build"></a>
-  <a href="https://github.com/traveler3022/Hermes2/releases/tag/debug-latest"><img src="https://img.shields.io/badge/⬇_Download-APK-6750A4?style=flat-square&logo=android&logoColor=white" alt="Download APK"></a>
+  <a href="https://github.com/traveler3022/Hermes2/releases/latest"><img src="https://img.shields.io/badge/⬇_Download-APK-6750A4?style=flat-square&logo=android&logoColor=white" alt="Download APK"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-00BCD4?style=flat-square" alt="License"></a>
   <br><br>
   <a href="README.md">English</a> · <a href="README.fa.md">فارسی</a>
@@ -49,23 +49,29 @@ You → Hermes2 → AI Provider (e.g. Google)
          └─ API key stays on your phone ✅
 ```
 
-> ⚠️ Never share your API key or passwords in the chat — 
+> ⚠️ Never paste your API key or passwords into the chat — anything you type is sent to the model provider.
 
 **What the agent can do:** Hermes runs shell commands inside Termux. On a non-rooted phone, Android's sandbox confines this to Termux's storage only.
-
 
 **Keep tool approval on** — it's your line of defense. When in doubt, Deny and ask the agent what it planned to do.
 
 ---
 
-## 📚 Documentation
+## 🚀 Getting Started
+
+Follow these guides **in order** — each one ends with a link to the next step:
+
+| Step | Guide | What you'll do |
+|---|---|---|
+| 1️⃣ | **[Install Hermes in Termux](docs/INSTALL_HERMES_TERMUX.md)** | Install Termux, then install the Hermes Agent inside it (~15 min) |
+| 2️⃣ | **[Run the Setup Wizard](docs/SETUP_HERMES_TERMUX.md)** | Configure your AI provider and tools with `hermes setup` |
+| 3️⃣ | **[Connect the App](docs/GATEWAY_SETUP.md)** | Install the APK and make the first connection (one-time) |
+
+**Also useful:**
 
 | | |
 |---|---|
-| **[Setup Guide](docs/RUNNING_ON_ANDROID_TERMUX.md)** | Complete install, config, first connection, and debugging |
-| **[Install in Termux](docs/INSTALL_HERMES_TERMUX.md)** | Step-by-step Termux installation |
-| **[Setup Wizard](docs/SETUP_HERMES_TERMUX.md)** | Guide to the `hermes setup` wizard |
-| **[First Connection](docs/GATEWAY_SETUP.md)** | Connect the app to Hermes for the first time |
+| **[Complete Technical Guide](docs/RUNNING_ON_ANDROID_TERMUX.md)** | Everything in one place: install, config, connection, and debugging |
 | **[Hermes Agent Docs](https://hermes-agent.nousresearch.com/docs)** | Official upstream documentation |
 
 ---
@@ -73,11 +79,11 @@ You → Hermes2 → AI Provider (e.g. Google)
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="screenshots/Screenshot_۲۰۲۶۰۷۰۱_۱۱۵۸۵۶_Hermes.jpg" width="150" alt="Chat"/>
-  <img src="screenshots/Screenshot_۲۰۲۶۰۷۰۱_۱۱۴۷۰۰_Hermes.jpg" width="150" alt="Sessions"/>
-  <img src="screenshots/Screenshot_۲۰۲۶۰۷۰۱_۱۱۴۲۲۴_Hermes.jpg" width="150" alt="Tools"/>
-  <img src="screenshots/Screenshot_۲۰۲۶۰۷۰۱_۱۱۴۲۲۱_Hermes.jpg" width="150" alt="Models"/>
-  <img src="screenshots/Screenshot_۲۰۲۶۰۷۰۱_۱۱۴۲۱۳_Hermes.jpg" width="150" alt="Settings"/>
+  <img src="screenshots/chat.jpg" width="150" alt="Chat"/>
+  <img src="screenshots/sessions.jpg" width="150" alt="Sessions"/>
+  <img src="screenshots/tools.jpg" width="150" alt="Tools"/>
+  <img src="screenshots/models.jpg" width="150" alt="Models"/>
+  <img src="screenshots/settings.jpg" width="150" alt="Settings"/>
 </p>
 
 ---
